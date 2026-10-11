@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head><script>/*ns*/(function(){try{var P="cw:";function wrap(n){var R=window[n];if(!R)return;var t={};function kk(){var a=[];for(var i=0;i<R.length;i++){var k=R.key(i);if(k&&k.indexOf(P)===0)a.push(k.slice(P.length))}return a}var m={getItem:function(k){return R.getItem(P+k)},setItem:function(k,v){R.setItem(P+k,v)},removeItem:function(k){R.removeItem(P+k)},clear:function(){kk().forEach(function(k){R.removeItem(P+k)})},key:function(i){var a=kk();return i<a.length?a[i]:null}};var px=new Proxy(t,{get:function(_,k){if(k==="length")return kk().length;if(typeof k==="symbol")return undefined;if(Object.prototype.hasOwnProperty.call(m,k))return m[k];var v=R.getItem(P+k);return v===null?undefined:v},set:function(_,k,v){R.setItem(P+k,String(v));return true},deleteProperty:function(_,k){R.removeItem(P+k);return true},has:function(_,k){return k==="length"||Object.prototype.hasOwnProperty.call(m,k)||R.getItem(P+k)!==null},ownKeys:function(){return kk()},getOwnPropertyDescriptor:function(_,k){var v=R.getItem(P+k);return v===null?undefined:{value:v,writable:true,enumerable:true,configurable:true}}});Object.defineProperty(window,n,{configurable:true,get:function(){return px}})}wrap("localStorage");wrap("sessionStorage")}catch(e){}})();</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090b10">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="CODEX STUDYS">
+  <title>Batch — CODEX STUDYS</title>
+  <link rel="icon" href="../img/cw.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="../img/cw.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem("codex-studys-theme");if(t&&t!=="system")document.documentElement.setAttribute("data-theme",t);})();</script>
+  <link rel="stylesheet" href="../shared/batch.css">
+  <link rel="stylesheet" href="../shared/lecture-player.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="back-btn" id="backBtn" type="button" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></button>
+    <h1 class="top-title" id="topTitle">Loading…</h1>
+  </header>
+
+  <main class="page" id="page">
+    <div class="list"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+  </main>
+
+  <section class="lv" id="lv" role="dialog" aria-modal="true" aria-label="Lecture player">
+    <div class="lv-main">
+      <div class="lv-stage" id="lvStage">
+        <div id="lvRoot"></div>
+        <div class="lv-alt" id="lvAlt"></div>
+      </div>
+    </div>
+  </section>
+  <div class="toast" id="toast"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js"></script>
+  <script src="../shared/lecture-player.js"></script>
+  <script src="../shared/batch.js"></script>
+</body>
+</html>
